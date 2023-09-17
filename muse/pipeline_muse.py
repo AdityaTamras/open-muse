@@ -191,7 +191,7 @@ class PipelineMuse:
                 "empty_cond_embeds": empty_cond_embeds,
             }
 
-        if self.transformer.config.add_micro_cond_embeds:
+        if self.transformer.config:
             micro_conds = list(orig_size) + list(crop_coords) + [aesthetic_score]
             micro_conds = torch.tensor(micro_conds, device=self.device, dtype=encoder_hidden_states.dtype)
             micro_conds = micro_conds.unsqueeze(0)
